@@ -1,0 +1,26 @@
+# Target directory (Nơi chứa file build .class, tuyệt đối không đẩy lên)
+target/
+!.mvn/wrapper/maven-wrapper.jar
+build/
+
+# IntelliJ IDEA configuration files (Cấu hình riêng của IDE máy bạn)
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# Eclipse configuration files
+.settings/
+.classpath
+.project
+.factorypath
+
+# Log files
+*.log
+
+# Mac OS files
+.DS_Store
+
+# Windows thumbnail databases
+Thumbs.db
