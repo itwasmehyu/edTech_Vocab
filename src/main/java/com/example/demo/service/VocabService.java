@@ -50,7 +50,11 @@ public class VocabService {
         String definitionVi = translationService.translateEnToVi(topResult.getDefinition());
         String exampleVi = translationService.translateEnToVi(exampleEn);
 
-        String phonetic = apiResponse.getPronunciation() != null ? apiResponse.getPronunciation().getAll() : "";
+        String phonetic = "";
+        if (apiResponse.getPronunciation() != null) {
+            phonetic = apiResponse.getPronunciation().toString();
+            // Dùng .toString() để gom sạch bất kể nó là chuỗi hay Json Object dạng {}
+        }
 
         // 4. Đóng gói vào Entity và lưu xuống Postgres
         Vocabulary newVocab = Vocabulary.builder()

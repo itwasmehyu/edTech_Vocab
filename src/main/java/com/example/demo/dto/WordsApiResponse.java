@@ -11,7 +11,7 @@ import java.util.List;
 public class WordsApiResponse {
     private String word;
     private List<Result> results;
-    private Pronunciation pronunciation;
+    private Object pronunciation;
     private Double frequency;
 
     @Getter
