@@ -23,7 +23,7 @@ public class UserDailyWidgetHistory {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "vocab_id", nullable = false)
     private Vocabulary vocabulary;
 

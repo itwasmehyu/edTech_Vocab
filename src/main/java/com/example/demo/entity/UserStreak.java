@@ -30,4 +30,8 @@ public class UserStreak {
 
     @Column(name = "last_learned_date")
     private LocalDate lastLearnedDate;
+
+    public void setWithId(Long id) {
+        this.userId = id;
+    }
 }
