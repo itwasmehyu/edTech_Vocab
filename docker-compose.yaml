@@ -6,13 +6,21 @@ services:
     image: postgres:15-alpine
     container_name: daily-vocab-postgres
     ports:
-      - "5433:5433"
+      - "5433:5432"
     environment:
       POSTGRES_DB: daily_vocab_db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: secret # Thay bằng mật khẩu thật của bạn
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  redis-cache:
+    image: redis:7-alpine
+    container_name: daily-vocab-redis
+    ports:
+      - "6379:6379"
     networks:
       - app-network
 
@@ -27,6 +35,10 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-db:5432/daily_vocab_db
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: secret
+
+      SPRING_DATA_REDIS_HOST: redis-cache
+      SPRING_DATA_REDIS_PORT: 6379
+
       RAPIDAPI_KEY: 9201ab90a8mshd72806d7e973316p1dc4b3jsn46d75e96d052
     depends_on:
       - postgres-db
